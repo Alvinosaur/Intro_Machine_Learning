@@ -35,18 +35,14 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
-
-
-
-
-
-
-
-
-
+h_theta = sigmoid(X*theta);         % 5 x 1
+J = (-1/m)*((y'*log(h_theta)) + (1-y')*(log(1-h_theta)));        % 1 x 1
+J = J + (lambda/(2*m))*theta(2:end)'*theta(2:end);
+% Note: for the reg term theta^2, can use: sum(theta(2:length(theta)).^2)
+grad = (1/m)*X'*(h_theta-y);        % end = length(vector)
+grad(2:end) = grad(2:end) + ...
+    (lambda/m)*theta(2:end);
 
 % =============================================================
-
-grad = grad(:);
 
 end

@@ -20,6 +20,15 @@ p = zeros(size(X, 1), 1);
 %       information see 'help max'. If your examples are in rows, then, you
 %       can use max(A, [], 2) to obtain the max for each row.
 %
+% Theta1 has size 25 x 401
+% Theta2 has size 10 x 26
+X = [ones(m, 1) X];
+h_theta1 = sigmoid(X*Theta1');              % 5000 x 25
+h_theta1 = [ones(m, 1) h_theta1];           % 5000 x 26
+h_theta2 = sigmoid(h_theta1*Theta2');       % 5000 x 10
+[p_max, ind_max] = max(h_theta2, [], 2);     % we don't want the actual 
+% probabilities, but rather indeces to predict label
+p = ind_max;
 
 
 

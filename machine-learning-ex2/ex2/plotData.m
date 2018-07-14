@@ -11,7 +11,10 @@ figure; hold on;
 %               2D plot, using the option 'k+' for the positive
 %               examples and 'ko' for the negative examples.
 %
-
+pos = find(y==1); neg = find(y==0);
+plot(X(pos, 1), X(pos, 2), 'k+');
+hold on
+plot(X(neg, 1), X(neg, 2), 'mo');
 
 
 
